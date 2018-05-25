@@ -1,0 +1,20 @@
+{
+  "devicename": "devicename1",
+  "sensor_list": [
+    {
+      "sensorcnt": 1,
+      "sensorurl": "url1",
+      "sensorname": "camera"
+    },
+    {
+      "sensorcnt": 0,
+      "sensorurl": "url",
+      "sensorname": "infrared"
+    },
+    {
+      "sensorcnt": 2,
+      "sensorurl": "url",
+      "sensorname": "camera"
+    }
+  ]
+}

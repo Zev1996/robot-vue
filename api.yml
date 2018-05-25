@@ -1,0 +1,135 @@
+swagger: "2.0"
+info:
+  title: robot site api
+  description: Robot Site Rest API powered by Django
+  version: 1.0.0
+
+host: 127.0.0.1:8000
+schemes:
+  - http
+basePath: /robot/api/v1
+produces:
+  - application/json
+
+paths:
+  /users/:
+    post:
+      description: sign up
+      parameters:
+        - name: user
+          in: body
+          description: the user to create
+          schema: 
+            required:
+              - username
+              - password
+              - nickname
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+              nickname:
+                type: string
+      responses:
+        201:
+          description: ok
+        400:
+          description: require username, password, nickname
+  /users/{username}/:
+    get:
+      description: get details of user
+      parameters:
+        - name: username
+          in: path
+          required: true
+          description: the user to get deails
+          type: string
+      responses:
+        200:
+          description: ok
+          schema:
+            properties:
+              device_list:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                    nickname:
+                      type: string
+              nickname:
+                type: string
+        400:
+          description: username in path is not match login in user's username
+    post:
+      description: change user's nickname or password; the user must login first; after return, user will be signed out
+      parameters:
+        - name: username
+          in: path
+          required: true
+          description: the user to change information
+          type: string
+        - name: information
+          in: body
+          schema: 
+            properties:
+              nickname:
+                type: string
+              password:
+                type: string
+      responses:
+        200:
+          description: ok
+    delete:
+      description: unregister a user; after return, user will be signed out; remove the relation between user and devices
+      parameters:
+        - name: username
+          in: path
+          required: true
+          description: the user to unregister
+          type: string
+  /session/:
+    post:
+      description: sign in
+      parameters:
+        - name: information
+          in: body
+          schema:
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+      responses:
+        200:
+          description: ok
+        400:
+          description: username or password error
+    delete:
+      description: sign out
+      responses:
+        204:
+          description: ok
+  /devices/{device_id}:
+    get:
+      description: get the information of device_id
+      parameters:
+        - name: device_id
+          in: path
+          required: true
+      responses:
+        200:
+          description: ok
+          schema:
+            properties:
+              sensor_list:
+                type: array
+                items:
+                  properties:
+                    sensorname:
+                      type: string
+              devicename:
+                type: string
+        400:
+          description: the device is not belonging to the current user

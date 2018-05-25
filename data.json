@@ -1,0 +1,21 @@
+{
+  "device_list": [
+    {
+      "id": 0,
+      "devicename": "devicename1"
+    },
+    {
+      "id": 1,
+      "devicename": "devicename2"
+    },
+    {
+      "id": 2,
+      "devicename": "devicename3"
+    },
+    {
+      "id": 3,
+      "devicename": "devicename4"
+    }
+  ],
+  "nickname": "nickname"
+}
