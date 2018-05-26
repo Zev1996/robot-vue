@@ -97,7 +97,7 @@ export default {
   onConnect: function() {
       console.log("connected");
       // this.client.send("/1/cmd", "monitor_open");
-      this.client.subscribe("/1/monitor/+");
+      this.client.subscribe("/"+localStorage.getItem('dev_id')+"/monitor/+");
     },
     tocpudount(){
       this.$router.push('/cpudount')
@@ -147,7 +147,7 @@ export default {
       useSSL: true
     }); // 连接服务器并注册连接成功处理事件
      setTimeout(function(){
-                        this.client.send("/1/cmd", "monitor_open");
+                        this.client.send("/"+localStorage.getItem('dev_id')+"/cmd", "monitor_open");
                   }.bind(this),10000)
     
       
@@ -162,7 +162,7 @@ export default {
       useSSL: true
     }); // 连接服务器并注册连接成功处理事件
      setTimeout(function(){
-                        this.client.send("/1/cmd", "monitor_close");
+                        this.client.send("/"+localStorage.getItem('dev_id')+"/cmd", "monitor_close");
                   }.bind(this),2000)
     }
 }

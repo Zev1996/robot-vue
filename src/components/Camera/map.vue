@@ -59,33 +59,22 @@ export default {
        this.i-=1
     },
     getmap(){
-      this.client.send("/5/map/webcmd",'{"data":"map_open"}')
+      this.client.send("/"+localStorage.getItem('dev_id')+"/map/webcmd",'{"data":"map_open"}')
     },
     getpoint(obj){
-      // var x=Math.round(obj.offsetX*this.width);
-      // var y=Math.round(obj.offsetY*this.height);
-      // console.log(x);
-      // console.log(y);
-      
-      this.client.send("/5/map/webgoal",'{"data":"Go_To('+obj.offsetX+','+obj.offsetY+')"}')
-      alert(obj.offsetX);
+      this.client.send("/"+localStorage.getItem('dev_id')+"/map/webgoal",
+      '{"data":"Go_To ('+obj.offsetX+','+obj.offsetY+')"}')
     },
 
 
     onConnect: function() {
       console.log("connected");
-      this.client.subscribe("/5/map/webpgm");
+      this.client.subscribe("/"+localStorage.getItem('dev_id')+"/map/webpgm");
     },
 
-    onMessageArrived(message) {
-      // var blob = new Blob([message.payloadBytes], { type: "image/jpeg" });
-      // this.src1 = window.URL.createObjectURL(blob);
-     
+    onMessageArrived(message) {  
        var res = JSON.parse(message.payloadString);
-       console.log(res);
-       this.imgaddress="data:image/jpeg;base64,"+res.data;
-      //  this.big();
-      
+       this.imgaddress="data:image/jpeg;base64,"+res.data;    
     },
   
   },

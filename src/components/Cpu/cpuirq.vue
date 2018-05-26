@@ -149,12 +149,12 @@ export default {
     },
        onConnect: function() {
       console.log("connected");
-      this.client.subscribe("/1/monitor/+");
+      this.client.subscribe("/"+localStorage.getItem('dev_id')+"/monitor/+");
     },
 
     onMessageArrived(message) {
         var res= JSON.parse(message.payloadString) 
-           if (message.destinationName == '/1/monitor/cpu_stat') {
+           if (message.destinationName === "/"+localStorage.getItem('dev_id')+'/monitor/cpu_stat') {
           
             this.updata(res);
           

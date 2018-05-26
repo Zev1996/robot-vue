@@ -19,7 +19,6 @@
         </li>
       </ul>  
     </div>
-    <button @click="getthing($event)">anniu </button>
       <mt-actionsheet
   :actions="actions"
   v-model="sheetVisible">
@@ -83,7 +82,7 @@ export default {
     },
     selectDev(dev, event) {
       let devid = dev.id;
-
+      localStorage.setItem('dev_id',devid);
       this.$router.push({ path: `/devinfo/${devid}` });
     },
     ToNew(){

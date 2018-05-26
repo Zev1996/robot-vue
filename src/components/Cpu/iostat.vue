@@ -73,9 +73,7 @@ export default {
      var now = new Date();
      var mm=res.data.disks
      var time = [now.getFullYear(), now.getMonth(), now.getDay()].join('/') +' '+[now.getHours(), now.getMinutes(), now.getSeconds()].join(':');
-    //  for(var i=0;i<=7;i++){
-    //      value[i]=[time,res.data[i].idle];
-    //  }
+    
         mmcblk0_w.push([time,mm.mmcblk0.wkbs]);
         mmcblk0_r.push([time,mm.mmcblk0.rkbs]);
         mmcblk1_w.push([time,mm.mmcblk1.wkbs]);
@@ -85,14 +83,7 @@ export default {
         mmcblk1boot1_w.push([time,mm.mmcblk1boot1.wkbs]);
         mmcblk1boot1_r.push([time,mm.mmcblk1boot1.rkbs]);
         
-        // console.log(mmcblk0_w);
-        //  console.log(mmcblk0_r);
-        //   console.log(mmcblk1_w);
-        //    console.log(mmcblk1_r);
-        //     console.log( mmcblk1boot0_w);
-        //      console.log( mmcblk1boot0_r);
-        //       console.log( mmcblk1boot1_w);
-        //       console.log(mmcblk1boot1_r);
+        
 
           let myChart=this.$echarts.init(document.getElementById('myChart'))
     myChart.setOption({
@@ -159,12 +150,12 @@ export default {
     },
        onConnect: function() {
       console.log("connected");
-      this.client.subscribe("/1/monitor/+");
+      this.client.subscribe("/"+localStorage.getItem('dev_id')+"/monitor/+");
     },
 
     onMessageArrived(message) {
         var res= JSON.parse(message.payloadString) 
-           if (message.destinationName == '/1/monitor/io_status') {
+           if (message.destinationName === "/"+localStorage.getItem('dev_id')+'/monitor/io_status') {
           
          
             // console.log(res);

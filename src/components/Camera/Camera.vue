@@ -54,7 +54,7 @@ export default {
 
     onConnect: function() {
       console.log("connected");
-      this.client.subscribe("/1/mcamera/0");
+      this.client.subscribe("/"+localStorage.getItem('dev_id')+"/mcamera/0");
     },
 
     onMessageArrived(message) {
@@ -62,28 +62,28 @@ export default {
       this.src1 = window.URL.createObjectURL(blob);
     },
     move_up() {
-      this.client.send("/5/webmove",'{"data":"Move_Forward"}');
+      this.client.send("/"+localStorage.getItem('dev_id')+"/webmove",'{"data":"Move_Forward"}');
     },
     move_down() {
       console.log("down");
-       this.client.send("/5/webmove",'{"data":"Move_Back"}');
+       this.client.send("/"+localStorage.getItem('dev_id')+"/webmove",'{"data":"Move_Back"}');
     },
     move_left() {
       console.log("left");
-       this.client.send("/5/webmove",'{"data":"Turn_L"}');
+       this.client.send("/"+localStorage.getItem('dev_id')+"/webmove",'{"data":"Turn_L"}');
     },
     move_stop(){
-       this.client.send("/5/webmove",'{"data":"Stop"}');
+       this.client.send("/"+localStorage.getItem('dev_id')+"/webmove",'{"data":"Stop"}');
     },
     move_right() {
       console.log("right");
-       this.client.send("/5/webmove",'{"data":"Turn_R"}');
+       this.client.send("/"+localStorage.getItem('dev_id')+"/webmove",'{"data":"Turn_R"}');
     },
     open(){
-        this.client.send("/1/cmd", "mcamera_open");
+        this.client.send("/"+localStorage.getItem('dev_id')+"/cmd", "mcamera_open");
     },
     close(){
-       this.client.send("/1/cmd", "mcamera_close");
+       this.client.send("/"+localStorage.getItem('dev_id')+"/cmd", "mcamera_close");
     }
   },
   created: function() {

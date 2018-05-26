@@ -25,8 +25,8 @@ export default {
       client: new Paho.MQTT.Client("222.201.144.236", 8001, "test"),
       value_replay:false,
       value_bundle:false,
-      topic:"/1/gesture/0/realtime",
-      topic_replay:"/1/gesture/0/replay",
+      topic:"/"+localStorage.getItem('dev_id')+"/gesture/0/realtime",
+      topic_replay:"/"+localStorage.getItem('dev_id')+"/gesture/0/replay",
       option: {
         left: 'center',
         top: 'middle',
@@ -74,11 +74,11 @@ export default {
       if(this.value_replay===true){
            this.client.unsubscribe(this.topic);
            data0=[];
-          this.client.send("/1/gesture/0/timemachine", "replay_open");
+          this.client.send("/"+localStorage.getItem('dev_id')+"/gesture/0/timemachine", "replay_open");
           this.client.subscribe(this. topic_replay);      
    
       }else if(this.value_replay===false){
-         this.client.send("/1/gesture/0/timemachine", "replay_close");
+         this.client.send("/"+localStorage.getItem('dev_id')+"/gesture/0/timemachine", "replay_close");
          data0=[];
          this.client.unsubscribe(this. topic_replay);
          this.client.subscribe(this.topic);
@@ -87,10 +87,10 @@ export default {
     },
      value_bundle: function(){
       if(this.value_bundle===true){
-         this.client.send("/1/cmd", "bundle_open");
+         this.client.send("/"+localStorage.getItem('dev_id')+"/cmd", "bundle_open");
          console.log("open...");
       }else if(this.value_bundle===false){
-       this.client.send("/1/cmd", "bundle_close");
+       this.client.send("/"+localStorage.getItem('dev_id')+"/cmd", "bundle_close");
       console.log("close...");
       data0.splice(0,data0.length);
       
@@ -103,11 +103,11 @@ export default {
       this.$router.go(-1);
     },
     open() {
-     this.client.send("/1/gesture/0/timemachine", "record_open");
+     this.client.send("/"+localStorage.getItem('dev_id')+"/gesture/0/timemachine", "record_open");
      console.log('开始录制。。')
     },
     close() {
-     this.client.send("/1/gesture/0/timemachine", "record_close");
+     this.client.send("/"+localStorage.getItem('dev_id')+"/gesture/0/timemachine", "record_close");
      console.log('结束录制。。')
     },
     CpuStatDonut() {

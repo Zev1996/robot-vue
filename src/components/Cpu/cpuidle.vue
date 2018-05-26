@@ -82,7 +82,6 @@ export default {
         data5.push(value[5]);
         data6.push(value[6]);
         data7.push(value[7]);
-        console.log(data0);
         
           let myChart=this.$echarts.init(document.getElementById('myChart'))
     myChart.setOption({
@@ -147,12 +146,12 @@ export default {
     },
        onConnect: function() {
       console.log("connected");
-      this.client.subscribe("/1/monitor/+");
+      this.client.subscribe("/"+localStorage.getItem('dev_id')+"/monitor/+");
     },
 
     onMessageArrived(message) {
         var res= JSON.parse(message.payloadString) 
-           if (message.destinationName == '/1/monitor/cpu_stat') {
+           if (message.destinationName === "/"+localStorage.getItem('dev_id')+'/monitor/cpu_stat') {
             console.log(res);
             this.updata(res);
           

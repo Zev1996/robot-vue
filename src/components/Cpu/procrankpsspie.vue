@@ -95,12 +95,12 @@ export default {
 
     onConnect: function() {
       console.log("connected");
-      this.client.subscribe("/1/monitor/+");
+      this.client.subscribe("/"+localStorage.getItem('dev_id')+"/monitor/+");
     },
 
     onMessageArrived(message) {
       var res = JSON.parse(message.payloadString);
-      if (message.destinationName == "/1/monitor/memory_procrank") {
+      if (message.destinationName === "/"+localStorage.getItem('dev_id')+"/monitor/memory_procrank") {
         this.updatedount(res);
        
       }
