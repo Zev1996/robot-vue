@@ -32,7 +32,7 @@ export default {
         let data = { username: this.username, password: this.password };
         /*接口请求*/
         this.$http
-          .post("http://222.201.144.236:8000/robot/api/v1/session/", data)
+          .post(this.apiaddress+"/session/", data)
           .then(
             res => {
               localStorage.setItem("token",res.body);

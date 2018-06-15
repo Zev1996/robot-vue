@@ -47,11 +47,12 @@ export default {
 
   created() {
     this.getdev();
+    console.log(this.apiaddress);
   },
   methods: {
     quit() {
       this.$http
-        .delete("http://222.201.144.236:8000/robot/api/v1/session/")
+        .delete(this.apiaddress+"/session/")
         .then(
           res => {
           },
@@ -68,7 +69,7 @@ export default {
     getdev(){
         let user = this.$route.params.id;
     this.$http
-      .get(`http://222.201.144.236:8000/robot/api/v1/users/${user}/`)
+      .get(`${this.apiaddress}/users/${user}/`)
       .then(
         response => {
           response = response.body;
@@ -110,7 +111,7 @@ export default {
 }
     this.$http
           .post(
-            `http://222.201.144.236:8000/robot/api/v1/devices/`,
+            `${this.apiaddress}/devices/`,
             data2
           )
           .then(
@@ -129,7 +130,7 @@ export default {
 
         this.$http
           .post(
-            `http://222.201.144.236:8000/robot/api/v1/users/123/${value}/`,
+            `${this.apiaddress}/users/123/${value}/`,
             data
           )
           .then(
@@ -149,7 +150,7 @@ export default {
 
         this.$http
           .delete(
-            `http://222.201.144.236:8000/robot/api/v1/users/123/${value}/`,
+            `${this.apiaddress}/users/123/${value}/`,
             data
           )
           .then(

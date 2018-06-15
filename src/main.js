@@ -9,6 +9,7 @@ import 'mint-ui/lib/style.css';
 import Stomp from 'stompjs';
 import echarts from 'echarts';
 import 'jquery';
+Vue.prototype.apiaddress="http://222.201.144.236:8000/robot/api/v1"
 // import 'lib-flexible/flexible' //flex
 
 Vue.use(MintUI);

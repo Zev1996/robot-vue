@@ -99,7 +99,48 @@ export default {
         hoverAnimation: false,
         data: data0
     },
-         ...
+    {
+        name: 'CPU-1',
+        type: 'line',
+        showSymbol: false,
+        hoverAnimation: false,
+        data: data1
+    },
+    {
+        name: 'CPU-2',
+        type: 'line',
+        showSymbol: false,
+        hoverAnimation: false,
+        data: data2
+    },
+    {
+        name: 'CPU-3',
+        type: 'line',
+        showSymbol: false,
+        hoverAnimation: false,
+        data: data3
+    },
+    {
+        name: 'CPU-4',
+        type: 'line',
+        showSymbol: false,
+        hoverAnimation: false,
+        data: data4
+    },
+    {
+        name: 'CPU-5',
+        type: 'line',
+        showSymbol: false,
+        hoverAnimation: false,
+        data: data5
+    },
+    {
+        name: 'CPU-6',
+        type: 'line',
+        showSymbol: false,
+        hoverAnimation: false,
+        data: data6
+    },
     {
         name:'CPU-7',
         type:'line', 

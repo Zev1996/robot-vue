@@ -43,7 +43,7 @@ export default {
           nickname: this.nickname
         };
         this.$http
-          .post("http://222.201.144.236:8000/robot/api/v1/users/", data)
+          .post(this.apiaddress+"/users/", data)
           .then(
             res => {
               MessageBox("提示", "注册成功");
