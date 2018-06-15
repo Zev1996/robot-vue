@@ -104,11 +104,11 @@ export default {
     },
     open() {
      this.client.send("/"+localStorage.getItem('dev_id')+"/sonar/0/timemachine", "record_open");
-     console.log('开始录制。。')
+     console.log('开始录制...')
     },
     close() {
      this.client.send("/"+localStorage.getItem('dev_id')+"/sonar/0/timemachine", "record_close");
-     console.log('结束录制。。')
+     console.log('结束录制...')
     },
     CpuStatDonut() {
       let myChart = this.$echarts.init(document.getElementById("myChart"));

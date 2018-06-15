@@ -66,7 +66,13 @@ export default {
     },
     updata(res){
      var now = new Date();
-     var time = [now.getFullYear(), now.getMonth(), now.getDay()].join('/') +' '+[now.getHours(), now.getMinutes(), now.getSeconds()].join(':');
+      var hours =now.getHours();
+     var minutes=now.getMinutes();
+     var seconds=now.getSeconds();
+     if(hours<10){ hours='0'+hours};
+     if(minutes<10){ minutes='0'+minutes};
+     if(seconds<10){ seconds='0'+seconds};
+     var time = [now.getFullYear(), now.getMonth(), now.getDay()].join('/') +' '+[hours, minutes,seconds].join(':');
   
         last1.push([time,res.data.last1])
         last5.push([time,res.data.last5])

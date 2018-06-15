@@ -10,6 +10,7 @@
     </div> 
 </template>
 <script>
+import { Indicator } from 'mint-ui';
 var data0 = [];
 var data1 = [];
 var data2 = [];
@@ -69,8 +70,14 @@ export default {
     },
     updata(res){
      var now = new Date();
+     var hours =now.getHours();
+     var minutes=now.getMinutes();
+     var seconds=now.getSeconds();
+     if(hours<10){ hours='0'+hours};
+     if(minutes<10){ minutes='0'+minutes};
+     if(seconds<10){ seconds='0'+seconds};
      var value=[];
-     var time = [now.getFullYear(), now.getMonth(), now.getDay()].join('/') +' '+[now.getHours(), now.getMinutes(), now.getSeconds()].join(':');
+     var time = [now.getFullYear(), now.getMonth(), now.getDay()].join('/') +' '+[hours, minutes,seconds].join(':');
      for(var i=0;i<=7;i++){
          value[i]=[time,res.data[i].idle];
      }
@@ -92,48 +99,7 @@ export default {
         hoverAnimation: false,
         data: data0
     },
-    {
-        name:'CPU-1',
-        type:'line', 
-        showSymbol:false, 
-        data:data1
-        
-    },
-     {
-        name:'CPU-2',
-        type:'line', 
-        showSymbol:false, 
-        data:data2
-        
-    },
-    {
-        name:'CPU-3',
-        type:'line', 
-        showSymbol:false, 
-        data:data3
-        
-    },
-    {
-        name:'CPU-4',
-        type:'line', 
-        showSymbol:false, 
-        data:data4
-        
-    },
-    {
-        name:'CPU-5',
-        type:'line', 
-        showSymbol:false, 
-        data:data5
-        
-    },
-    {
-        name:'CPU-6',
-        type:'line', 
-        showSymbol:false, 
-        data:data6
-        
-    },
+         ...
     {
         name:'CPU-7',
         type:'line', 
@@ -154,6 +120,7 @@ export default {
            if (message.destinationName === "/"+localStorage.getItem('dev_id')+'/monitor/cpu_stat') {
             console.log(res);
             this.updata(res);
+           
           
            }
  
@@ -163,6 +130,7 @@ export default {
     
   },
   created(){
+     
       this.client.connect({ userName: '123', password: '123', onSuccess: this.onConnect, useSSL:true}); // 连接服务器并注册连接成功处理事件
     this.client.onMessageArrived = this.onMessageArrived; // 注册消息接收处理事件
   }

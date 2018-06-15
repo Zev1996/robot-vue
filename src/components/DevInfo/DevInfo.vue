@@ -40,7 +40,6 @@ export default {
       let device_id = this.$route.params.id;
        this.$http.get(`http://222.201.144.236:8000/robot/api/v1/devices/${device_id}/`).then((response)=>{
       response=response.body.sensor_list;
-      console.log(response);
       for(var i=0;i<response.length;i++){
         if(response[i].sensorname==="mcamera"){
           response[i]["url"]="/static/mcamera.png"

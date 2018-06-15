@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       name: "",
-      actions:[{name:'添加设备',method:this.ToNew},{name:'通过id添加设备',method:this.ToAdd},{name:'删除设备',method:this.ToDelete}],
+      actions:[{name:'注册设备',method:this.ToNew},{name:'添加设备',method:this.ToAdd},{name:'删除设备',method:this.ToDelete}],
       sheetVisible:false,
       selectedDev: {},
       device_list: [],

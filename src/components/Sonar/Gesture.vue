@@ -144,7 +144,7 @@ export default {
       
         
         var res = JSON.parse(message.payloadString);
-        
+        console.log(res);
       this.updata(res);
      
      
